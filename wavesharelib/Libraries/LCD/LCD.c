@@ -351,7 +351,7 @@ void lcd_draw_rect(uint16_t hwXpos,  //specify x position.
 void lcd_init(void)
 {
 //	__LCD_RST_CLR();
-//	delay_ms(100);
+//	DWT_Delay_ms(100);
 //	__LCD_RST_SET();
 	__LCD_CS_SET();
 	__LCD_BKL_SET();
@@ -405,20 +405,20 @@ void lcd_init(void)
 	lcd_write_register(0x19,0x01); //OSC_EN='1', start Osc
 	lcd_write_register(0x01,0x00); //DP_STB='0', out deep sleep
 	lcd_write_register(0x1F,0x88);// GAS=1, VOMG=00, PON=0, DK=1, XDK=0, DVDH_TRI=0, STB=0
-	delay_ms(5);
+	DWT_Delay_ms(5);
 	lcd_write_register(0x1F,0x80);// GAS=1, VOMG=00, PON=0, DK=0, XDK=0, DVDH_TRI=0, STB=0
-	delay_ms(5);
+	DWT_Delay_ms(5);
 	lcd_write_register(0x1F,0x90);// GAS=1, VOMG=00, PON=1, DK=0, XDK=0, DVDH_TRI=0, STB=0
-	delay_ms(5);
+	DWT_Delay_ms(5);
 	lcd_write_register(0x1F,0xD0);// GAS=1, VOMG=10, PON=1, DK=0, XDK=0, DDVDH_TRI=0, STB=0
-	delay_ms(5);
+	DWT_Delay_ms(5);
 	//262k/65k color selection
 	lcd_write_register(0x17,0x05); //default 0x06 262k color // 0x05 65k color
 	//SET PANEL
 	lcd_write_register(0x36,0x00); //SS_P, GS_P,REV_P,BGR_P
 	//Display ON Setting
 	lcd_write_register(0x28,0x38); //GON=1, DTE=1, D=1000
-	delay_ms(40);
+	DWT_Delay_ms(40);
 	lcd_write_register(0x28,0x3F); //GON=1, DTE=1, D=1100
 
 	lcd_write_register(0x16,0x18); 

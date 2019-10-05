@@ -21,7 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "LIB_Config.h"
 #include "delay.h"
-
+#include "dwt_stm32_delay.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -40,9 +40,11 @@ static uint16_t s_hwFacMill = 0;
  */
 void delay_init(uint32_t wSystemCoreClock)	 
 {
+  /*
 	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);	 
 	s_chFacMicro = wSystemCoreClock / 8000000;	  //SystemCoreClock
 	s_hwFacMill = (uint16_t)s_chFacMicro * 1000;//   
+	*/
 }								    
 
 /**
@@ -52,6 +54,8 @@ void delay_init(uint32_t wSystemCoreClock)
  */
 void delay_us(uint32_t wMicro)
 {		
+  DWT_Delay_us(wMicro);
+  /*
 	uint32_t wTemp;
 	
 	SysTick->LOAD = wMicro * s_chFacMicro;   		 
@@ -62,7 +66,8 @@ void delay_us(uint32_t wMicro)
 	}
 	while(wTemp & 0x01 && !(wTemp & (1 << 16)));   
 	SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;       
-	SysTick->VAL = 0X00;       
+	SysTick->VAL = 0X00;
+	*/
 }
 
 /**
@@ -71,8 +76,11 @@ void delay_us(uint32_t wMicro)
  * @retval None
  */
 void delay_ms(uint16_t hwMill)
-{	 		  	  
-	uint32_t wTemp;
+{
+
+  DWT_Delay_us((uint32_t)hwMill*1000);
+	/*
+  uint32_t wTemp;
 	
 	SysTick->LOAD = (uint32_t)hwMill * s_hwFacMill;
 	SysTick->VAL = 0x00;           
@@ -82,7 +90,8 @@ void delay_ms(uint16_t hwMill)
 	}
 	while(wTemp & 0x01 && !(wTemp & (1 << 16)));
 	SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;       
-	SysTick->VAL = 0X00;       
+	SysTick->VAL = 0X00;
+	*/
 } 
 
 /*-------------------------------END OF FILE-------------------------------*/

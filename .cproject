@@ -49,6 +49,9 @@
 									<listOptionValue builtIn="false" value="../../stm_mylibs/uart"/>
 									<listOptionValue builtIn="false" value="../wavesharelib/LIB_Config"/>
 									<listOptionValue builtIn="false" value="../wavesharelib/PF_Config"/>
+									<listOptionValue builtIn="false" value="../wavesharelib/Libraries/SPI"/>
+									<listOptionValue builtIn="false" value="../wavesharelib/Libraries/LCD"/>
+									<listOptionValue builtIn="false" value="../wavesharelib/Libraries/Fonts"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1324355790" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__weak=&quot;__attribute__((weak))&quot;"/>

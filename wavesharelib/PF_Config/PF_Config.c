@@ -46,11 +46,6 @@ static void spi1_init(void);
   */
 void system_init(void)
 {
-	RCC_ClocksTypeDef tRCC;
-	
-	RCC_GetClocksFreq(&tRCC); 
-	delay_init(tRCC.HCLK_Frequency);
-    
     device_init();
     driver_init();
 }
