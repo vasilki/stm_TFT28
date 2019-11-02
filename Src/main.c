@@ -41,7 +41,7 @@
 #include "stm32f4xx_hal.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "main_usercode.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -69,7 +69,7 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+uint8_t GL_PROJECT_NAME[]="PROJECT OF EXPERIMENTS WITH ShareWave TFT 2.8 #1\r\n";
 /* USER CODE END 0 */
 
 /**
@@ -112,7 +112,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+    main_usercode();
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
