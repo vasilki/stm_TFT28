@@ -45,18 +45,18 @@
 #include "Fonts.h"
 
 //#define LCD_RST_GPIO   GPIOB
-#define LCD_BKL_GPIO   GPIOC
-#define LCD_DC_GPIO    GPIOA
-#define LCD_CS_GPIO    GPIOB
+#define LCD_BKL_GPIO   LCD_BL_GPIO_Port
+#define LCD_DC_GPIO    LCD_DC_GPIO_Port
+#define LCD_CS_GPIO    LCD_CS_GPIO_Port
 #define LCD_CLK_GPIO   GPIOA
 #define LCD_SDI_GPIO   GPIOA
 #define LCD_SDO_GPIO   GPIOA
 
 
 //#define LCD_RST_PIN    GPIO_Pin_0
-#define LCD_BKL_PIN    GPIO_Pin_7
-#define LCD_DC_PIN     GPIO_Pin_8
-#define LCD_CS_PIN     GPIO_Pin_6
+#define LCD_BKL_PIN    LCD_BL_Pin
+#define LCD_DC_PIN     LCD_DC_Pin
+#define LCD_CS_PIN     LCD_CS_Pin
 #define LCD_CLK_PIN    GPIO_Pin_5
 #define LCD_SDO_PIN    GPIO_Pin_6
 #define LCD_SDI_PIN    GPIO_Pin_7
@@ -64,14 +64,14 @@
 //#define __LCD_RST_SET()     GPIO_WriteBit(LCD_RST_GPIO, LCD_RST_PIN, Bit_SET)
 //#define __LCD_RST_CLR()     GPIO_WriteBit(LCD_RST_GPIO, LCD_RST_PIN, Bit_RESET)
 
-#define __LCD_BKL_SET()    GPIO_WriteBit(LCD_BKL_GPIO, LCD_BKL_PIN, Bit_SET)
-#define __LCD_BKL_CLR()    GPIO_WriteBit(LCD_BKL_GPIO, LCD_BKL_PIN, Bit_RESET)
+#define __LCD_BKL_SET()    HAL_GPIO_WritePin(LCD_BKL_GPIO, LCD_BKL_PIN, GPIO_PIN_SET)
+#define __LCD_BKL_CLR()    HAL_GPIO_WritePin(LCD_BKL_GPIO, LCD_BKL_PIN, GPIO_PIN_RESET)
 
-#define __LCD_CS_SET()     GPIO_WriteBit(LCD_CS_GPIO, LCD_CS_PIN, Bit_SET)
-#define __LCD_CS_CLR()     GPIO_WriteBit(LCD_CS_GPIO, LCD_CS_PIN, Bit_RESET)
+#define __LCD_CS_SET()     HAL_GPIO_WritePin(LCD_CS_GPIO, LCD_CS_PIN, GPIO_PIN_SET)
+#define __LCD_CS_CLR()     HAL_GPIO_WritePin(LCD_CS_GPIO, LCD_CS_PIN, GPIO_PIN_RESET)
 
-#define __LCD_DC_SET()     GPIO_WriteBit(LCD_DC_GPIO, LCD_DC_PIN, Bit_SET)
-#define __LCD_DC_CLR()     GPIO_WriteBit(LCD_DC_GPIO, LCD_DC_PIN, Bit_RESET)
+#define __LCD_DC_SET()     HAL_GPIO_WritePin(LCD_DC_GPIO, LCD_DC_PIN, GPIO_PIN_SET)
+#define __LCD_DC_CLR()     HAL_GPIO_WritePin(LCD_DC_GPIO, LCD_DC_PIN, GPIO_PIN_RESET)
 
 //#define __LCD_WRITE_WORD(__DATA)       spi_read_write_word(SPI2, __DATA)
 #define __LCD_WRITE_BYTE(__DATA)       spi_read_write_byte(SPI1, __DATA)

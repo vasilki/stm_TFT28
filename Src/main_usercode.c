@@ -1,7 +1,7 @@
 #include "stm32f4xx_hal.h"
 #include <string.h>
 #include <stdio.h>
-#include "adc.h"
+//#include "adc.h"
 #include "button_handle.h"
 #include "timers.h"
 #include "uart.h"
@@ -103,8 +103,8 @@ void main_Init(void)
     uart_PrintfBuildVersion(&huart1);
     
     /*TFT2.8 init*/
-    system_init();
-    main_draw();
+   // system_init();
+  //  main_draw();
 
     loc_B_IsFirstTime = 1;
   }

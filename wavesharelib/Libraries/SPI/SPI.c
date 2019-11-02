@@ -41,7 +41,12 @@ uint8_t spi_read_write_byte(SPI_TypeDef* tSPIx, uint8_t chByte);
   */
 uint8_t spi_read_write_byte(SPI_TypeDef* tSPIx, uint8_t chByte)
 {		
-	uint8_t chRetry = 0;
+
+
+  //HAL_SPI_TransmitReceive
+
+  /*
+  uint8_t chRetry = 0;
 
 	uint8_t chTemp = 0;
 
@@ -61,13 +66,17 @@ uint8_t spi_read_write_byte(SPI_TypeDef* tSPIx, uint8_t chByte)
 	}
 
 	chTemp = SPI_I2S_ReceiveData(tSPIx);
+	*/
+	/* Wait until the BSY flag is set */
+	/*
 	
-	/* Wait until the BSY flag is set */ 
 	while(SPI_I2S_GetFlagStatus(tSPIx, SPI_I2S_FLAG_BSY) != RESET) {
 	
 	}
 	
 	return chTemp;
+
+	*/
 }
 
 /*-------------------------------END OF FILE-------------------------------*/

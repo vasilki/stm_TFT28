@@ -49,6 +49,13 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define LCD_BL_Pin GPIO_PIN_7
+#define LCD_BL_GPIO_Port GPIOC
+#define LCD_DC_Pin GPIO_PIN_8
+#define LCD_DC_GPIO_Port GPIOA
+#define LCD_CS_Pin GPIO_PIN_6
+#define LCD_CS_GPIO_Port GPIOB
+
 /* ########################## Assert Selection ############################## */
 /**
   * @brief Uncomment the line below to expanse the "assert_param" macro in the 

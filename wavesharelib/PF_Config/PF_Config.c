@@ -22,6 +22,7 @@
 #include "LIB_Config.h"
 #include <stdio.h>
 #include <stdlib.h>
+//#include "stm32f4xx_hal.h"
 
 //Platform Configuration
 
@@ -64,25 +65,31 @@ static void driver_init(void)
 
 static void port_init(void) 
 {
-	GPIO_InitTypeDef tGPIO;
+/*
+ *
+ 	GPIO_InitTypeDef tGPIO;
 	
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOB | RCC_AHB1Periph_GPIOC, ENABLE);  
+	*/
 	/*----------------------------------------------------------------------------------*/
-	//SPI
+	/*
+	 * //SPI
 	tGPIO.GPIO_Pin = LCD_CLK_PIN | LCD_SDI_PIN | LCD_SDO_PIN;	 //SCK	MOSI  MISO		 
 	tGPIO.GPIO_Mode = GPIO_Mode_AF;
   	tGPIO.GPIO_OType = GPIO_OType_PP;
   	tGPIO.GPIO_PuPd = GPIO_PuPd_UP;
   	tGPIO.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &tGPIO);
-    
+    */
     /* Connect SCK, MISO and MOSI pins to SPI alternate */
+	/*
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource5, GPIO_AF_SPI1);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_SPI1);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_SPI1); 
-    
+    */
 	/*----------------------------------------------------------------------------------*/
-	//LCD
+	/*
+	 * //LCD
 	tGPIO.GPIO_Pin = LCD_CS_PIN;   			 
 	tGPIO.GPIO_Mode = GPIO_Mode_OUT;
 	tGPIO.GPIO_OType = GPIO_OType_PP;
@@ -103,6 +110,8 @@ static void port_init(void)
 	tGPIO.GPIO_PuPd = GPIO_PuPd_UP;
 	tGPIO.GPIO_Speed = GPIO_Speed_50MHz; 
 	GPIO_Init(LCD_BKL_GPIO, &tGPIO);
+
+	*/
 	/*----------------------------------------------------------------------------------*/
 }
 
@@ -113,7 +122,9 @@ static void port_init(void)
   */
 static void spi1_init(void)
 {
-	SPI_InitTypeDef tSPI;
+	/*
+
+  SPI_InitTypeDef tSPI;
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
 
@@ -123,6 +134,9 @@ static void spi1_init(void)
 	tSPI.SPI_CPOL = SPI_CPOL_High;		
 	tSPI.SPI_CPHA = SPI_CPHA_2Edge;	
 	tSPI.SPI_NSS = SPI_NSS_Soft;
+
+	*/
+
 	/* SPI baudrate is set to 9 MHz maximum (PCLK2/SPI_BaudRatePrescaler = 72/8 = 9 MHz) 
        to verify these constraints:
           - ST7735R LCD SPI interface max baudrate is 15MHz for write and 6.66MHz for read
@@ -131,12 +145,16 @@ static void spi1_init(void)
           - SD card SPI interface max baudrate is 25MHz for write/read
           - PCLK2 max frequency is 72 MHz 
        */
+
+	/*
 	tSPI.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;		
 	tSPI.SPI_FirstBit = SPI_FirstBit_MSB;	
 	tSPI.SPI_CRCPolynomial = 7;	
 	SPI_Init(SPI1, &tSPI);  
  
 	SPI_Cmd(SPI1, ENABLE); 
+
+	*/
 }
 
 

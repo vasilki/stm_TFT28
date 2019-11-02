@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>stm_TFT28</name>
-	<comment></comment>
+	<comment />
 	<projects>
 	</projects>
 	<buildSpec>
@@ -63,27 +63,27 @@
 		<link>
 			<name>mylibs/button/button_handle.c</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/stm_mylibs/button/button_handle.c</locationURI>
+			<location>PARENT-1-PROJECT_LOC/stm_mylibs/button/button_handle.c</location>
 		</link>
 		<link>
 			<name>mylibs/button/button_handle.h</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/stm_mylibs/button/button_handle.h</locationURI>
+			<location>PARENT-1-PROJECT_LOC/stm_mylibs/button/button_handle.h</location>
 		</link>
 		<link>
 			<name>mylibs/led/LED.c</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/stm_mylibs/led/LED.c</locationURI>
+			<location>PARENT-1-PROJECT_LOC/stm_mylibs/led/LED.c</location>
 		</link>
 		<link>
 			<name>mylibs/led/LED.h</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/stm_mylibs/led/LED.h</locationURI>
+			<location>PARENT-1-PROJECT_LOC/stm_mylibs/led/LED.h</location>
 		</link>
 		<link>
 			<name>mylibs/uart/uart.h</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/stm_mylibs/uart/uart.h</locationURI>
+			<location>PARENT-1-PROJECT_LOC/stm_mylibs/uart/uart.h</location>
 		</link>
 	</linkedResources>
 </projectDescription>
