@@ -27,13 +27,14 @@
 #include "MacroAndConst.h"
 #include <math.h>
 #include <stdlib.h>
+#include "stm32f4xx_hal_spi.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 
-#define LCD_WIDTH    240
-#define LCD_HEIGHT   320
+#define LCD_WIDTH    320
+#define LCD_HEIGHT   240
 
 #define FONT_1206    12
 #define FONT_1608    16
@@ -56,9 +57,11 @@
 #define LCD_CMD                0
 #define LCD_DATA               1
 
+extern SPI_HandleTypeDef *GL_pLCDSPI;
+
 /* Exported functions ------------------------------------------------------- */
 
-extern void lcd_init(void);
+extern void lcd_init(SPI_HandleTypeDef *par_hspi);
 extern void lcd_draw_point(uint16_t hwXpos, uint16_t hwYpos, uint16_t hwColor);
 extern void lcd_display_char(uint16_t hwXpos, //specify x position.
                          uint16_t hwYpos, //specify y position.

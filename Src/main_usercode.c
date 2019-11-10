@@ -12,6 +12,8 @@
 extern UART_HandleTypeDef huart1; /*declared in main.c*/
 //extern ADC_HandleTypeDef hadc1; /*declared in main.c*/
 extern TIM_HandleTypeDef htim9;
+extern SPI_HandleTypeDef hspi1;
+
 
 static void main_Init(void);
 static void main_heartbeat(void);
@@ -38,7 +40,7 @@ void main_usercode(void)
   
   /*HeartBeat*/
   main_heartbeat();
-
+  main_draw();
   /*Running LED*/
   if(loc_time_sec != loc_prev_time_sec)
   {
@@ -106,8 +108,8 @@ void main_Init(void)
     uart_PrintfBuildVersion(&huart1);
     
     /*TFT2.8 init*/
-   // system_init();
-  //  main_draw();
+    system_init(&hspi1);
+
 
     loc_B_IsFirstTime = 1;
   }
@@ -152,6 +154,9 @@ void main_heartbeat(void)
 
 void main_draw(void)
 {
+
+  lcd_draw_rect(1, 1, 50, 50, RED);
+
   lcd_draw_rect(30, 40, 150, 100, RED);
   lcd_draw_circle(120, 160, 50, BLUE);
   lcd_draw_line(30, 40, 180, 140, RED);

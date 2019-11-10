@@ -24,12 +24,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "MacroAndConst.h"
+#include "stm32f4xx_hal_spi.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-extern uint8_t spi_read_write_byte(SPI_TypeDef* tSPIx, uint8_t chByte);
+extern uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t chByte);
 
 #endif
 

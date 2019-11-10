@@ -30,7 +30,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* Private function prototypes -----------------------------------------------*/
-uint8_t spi_read_write_byte(SPI_TypeDef* tSPIx, uint8_t chByte);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -39,11 +38,22 @@ uint8_t spi_read_write_byte(SPI_TypeDef* tSPIx, uint8_t chByte);
   * @param  tSPIx: where x can be 1 , 2 or 3 to select the SPI pripheral.
   * @retval chByte: Receive an byte from SPI bus
   */
-uint8_t spi_read_write_byte(SPI_TypeDef* tSPIx, uint8_t chByte)
+uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t chByte)
 {		
+  uint8_t loc_writebyte = chByte;
+  uint8_t loc_readbyte = 0;
+  if(par_SPI != NULL)
+  {
+    /*HAL_SPI_TransmitReceive(par_SPI,&loc_writebyte,&loc_readbyte,1,200);*/
+    HAL_SPI_Transmit(par_SPI,&loc_writebyte,1,2000);
+  }
+  else
+  {
+    /*nothing to do*/
+  }
 
 
-  //HAL_SPI_TransmitReceive
+  return loc_readbyte;
 
   /*
   uint8_t chRetry = 0;

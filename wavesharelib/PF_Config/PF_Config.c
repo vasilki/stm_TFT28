@@ -34,9 +34,9 @@
 //uint16_t g_hwDevId = 0;
 
 /* Private function prototypes -----------------------------------------------*/
-void system_init(void);
+void system_init(SPI_HandleTypeDef *par_hspi);
 static void device_init(void);
-static void driver_init(void);
+static void driver_init(SPI_HandleTypeDef *par_hspi);
 static void port_init(void);
 static void spi1_init(void);
 
@@ -45,10 +45,10 @@ static void spi1_init(void);
   * @param  None
   * @retval  None
   */
-void system_init(void)
+void system_init(SPI_HandleTypeDef *par_hspi)
 {
     device_init();
-    driver_init();
+    driver_init(par_hspi);
 }
 
 static void device_init(void)	
@@ -58,9 +58,9 @@ static void device_init(void)
 }
 
 
-static void driver_init(void)
+static void driver_init(SPI_HandleTypeDef *par_hspi)
 {
-	lcd_init();
+  lcd_init(par_hspi);
 }
 
 static void port_init(void) 

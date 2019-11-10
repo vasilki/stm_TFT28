@@ -26,7 +26,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "MacroAndConst.h"  
-
+#include "stm32f4xx_hal_spi.h"
 extern uint16_t g_hwDevId;
 
 /* Exported types ------------------------------------------------------------*/
@@ -34,7 +34,7 @@ extern uint16_t g_hwDevId;
 /* Exported macro ------------------------------------------------------------*/
 
 /* Exported functions ------------------------------------------------------- */
-extern void system_init(void);
+extern void system_init(SPI_HandleTypeDef *par_hspi);
 extern void sd_card_config(void);
 extern void display_images(void);
 

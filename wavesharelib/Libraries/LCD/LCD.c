@@ -22,6 +22,7 @@
 #include "LIB_Config.h"
 #include "Fonts.h"
 #include "LCD.h"
+#include "dwt_stm32_delay.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -33,6 +34,8 @@
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
+
+SPI_HandleTypeDef *GL_pLCDSPI = NULL;
 
 
 static void lcd_write_byte(uint8_t chByte, uint8_t chCmd)
@@ -119,7 +122,7 @@ void lcd_display_char(uint16_t hwXpos, //specify x position.
                          uint8_t chSize,  //specify the size of the char
                          uint16_t hwColor) //specify the color of the char
 {      	
-	uint8_t i, j, chTemp;
+	uint8_t i, j, chTemp = 0;
 	uint16_t hwYpos0 = hwYpos, hwColorVal = 0;
 
 	if (hwXpos >= LCD_WIDTH || hwYpos >= LCD_HEIGHT) {
@@ -348,8 +351,11 @@ void lcd_draw_rect(uint16_t hwXpos,  //specify x position.
 
 //initialize the lcd.
 //phwDevId pointer to device ID of lcd
-void lcd_init(void)
+void lcd_init(SPI_HandleTypeDef *par_hspi)
 {
+
+  GL_pLCDSPI = par_hspi;
+
 //	__LCD_RST_CLR();
 //	DWT_Delay_ms(100);
 //	__LCD_RST_SET();
@@ -432,7 +438,7 @@ void lcd_init(void)
 	lcd_write_register(0x08,0x01);
 	lcd_write_register(0x09,0x3F); //Row End
     
-    lcd_clear_screen(WHITE);
+    lcd_clear_screen(BLUE);
 }
 
 

@@ -74,7 +74,7 @@
 #define __LCD_DC_CLR()     HAL_GPIO_WritePin(LCD_DC_GPIO, LCD_DC_PIN, GPIO_PIN_RESET)
 
 //#define __LCD_WRITE_WORD(__DATA)       spi_read_write_word(SPI2, __DATA)
-#define __LCD_WRITE_BYTE(__DATA)       spi_read_write_byte(SPI1, __DATA)
+#define __LCD_WRITE_BYTE(__DATA)       spi_read_write_byte(GL_pLCDSPI, __DATA)
 
 /*------------------------------------------------------------------------------------------------------*/
 #include "PF_Config.h"
