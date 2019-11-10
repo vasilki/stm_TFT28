@@ -52,12 +52,13 @@ void main_usercode(void)
  
   loc_time_ms = tim_GetTimeFromStartMS();
 
-  UART_PRINTFINTEGER(loc_time_ms,"DEC")
+ /* UART_PRINTFINTEGER(loc_time_ms,"DEC")*/
 // if(loc_time_sec != loc_prev_time_sec)
-  if(((loc_time_ms % 1000)/100) != ((loc_prev_time_ms % 1000)/100))
+  if(loc_time_sec != loc_prev_time_sec)
   {
 
-    UART_PRINTFINTEGER(HAL_RCC_GetSysClockFreq()+1,"DEC")
+   /* UART_PRINTFINTEGER(HAL_RCC_GetSysClockFreq()+1,"DEC")*/
+    UART_PRINTFINTEGER(loc_time_ms,"DEC")
   }
   else
   {
