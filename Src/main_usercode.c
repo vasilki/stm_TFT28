@@ -11,6 +11,7 @@
 
 extern UART_HandleTypeDef huart1; /*declared in main.c*/
 //extern ADC_HandleTypeDef hadc1; /*declared in main.c*/
+extern TIM_HandleTypeDef htim9;
 
 static void main_Init(void);
 static void main_heartbeat(void);
@@ -51,6 +52,7 @@ void main_usercode(void)
  
   loc_time_ms = tim_GetTimeFromStartMS();
 
+  UART_PRINTFINTEGER(loc_time_ms,"DEC")
 // if(loc_time_sec != loc_prev_time_sec)
   if(((loc_time_ms % 1000)/100) != ((loc_prev_time_ms % 1000)/100))
   {
@@ -93,7 +95,7 @@ void main_Init(void)
     button_SetActiveButtons('B',6);
 
     /*TIM init*/
-    tim_InitTimer();
+    tim_InitTimer(&htim9);
 
     /*DWT init*/
     DWT_Delay_Init();

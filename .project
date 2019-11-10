@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>stm_TFT28</name>
-	<comment />
+	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -26,64 +26,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>mylibs</name>
+			<name>stm_mylibs</name>
 			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>mylibs/button</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>mylibs/dwt_stm32_delay</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>mylibs/lcd_1602</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>mylibs/led</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>mylibs/timers</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>mylibs/uart</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>mylibs/button/button_handle.c</name>
-			<type>1</type>
-			<location>PARENT-1-PROJECT_LOC/stm_mylibs/button/button_handle.c</location>
-		</link>
-		<link>
-			<name>mylibs/button/button_handle.h</name>
-			<type>1</type>
-			<location>PARENT-1-PROJECT_LOC/stm_mylibs/button/button_handle.h</location>
-		</link>
-		<link>
-			<name>mylibs/led/LED.c</name>
-			<type>1</type>
-			<location>PARENT-1-PROJECT_LOC/stm_mylibs/led/LED.c</location>
-		</link>
-		<link>
-			<name>mylibs/led/LED.h</name>
-			<type>1</type>
-			<location>PARENT-1-PROJECT_LOC/stm_mylibs/led/LED.h</location>
-		</link>
-		<link>
-			<name>mylibs/uart/uart.h</name>
-			<type>1</type>
-			<location>PARENT-1-PROJECT_LOC/stm_mylibs/uart/uart.h</location>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
