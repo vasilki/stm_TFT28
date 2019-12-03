@@ -51,22 +51,6 @@ void main_usercode(void)
     /*nothing to do*/
   }
 
- 
-  loc_time_ms = tim_GetTimeFromStartMS();
-
- /* UART_PRINTFINTEGER(loc_time_ms,"DEC")*/
-// if(loc_time_sec != loc_prev_time_sec)
-  if(loc_time_sec != loc_prev_time_sec)
-  {
-
-   /* UART_PRINTFINTEGER(HAL_RCC_GetSysClockFreq()+1,"DEC")*/
-    UART_PRINTFINTEGER(loc_time_ms,"DEC")
-  }
-  else
-  {
-    /*nothing to do*/
-  }
-
   //loc_adc_val = adc_GetValue(&hadc1);
   button_Processing();
   loc_B_button_state = button_GetButtonState('B',6);
@@ -132,6 +116,9 @@ void main_heartbeat(void)
   
   if(loc_prev_time_sec != loc_time_sec)
   {
+    UART_PRINTFINTEGER(loc_time_sec,"DEC")
+    /*
+     * LED2 is occupied by SCI
     if((loc_time_sec % 2) == 0)
     {
       HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
@@ -140,6 +127,7 @@ void main_heartbeat(void)
     {
       HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
     }
+    */
     loc_prev_time_sec = loc_time_sec;
   }
   else
