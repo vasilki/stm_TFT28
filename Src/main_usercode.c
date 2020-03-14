@@ -36,36 +36,14 @@ void main_usercode(void)
   tim_UpdatePeriod();
   loc_time = tim_GetPeriod();
   loc_time_sec = tim_GetTimeFromStartSEC();
+  loc_time_ms = tim_GetTimeFromStartMS();
+
   
   
   /*HeartBeat*/
   main_heartbeat();
   main_draw();
-  /*Running LED*/
-  if(loc_time_sec != loc_prev_time_sec)
-  {
- 
-  }
-  else
-  {
-    /*nothing to do*/
-  }
 
- 
-  loc_time_ms = tim_GetTimeFromStartMS();
-
- /* UART_PRINTFINTEGER(loc_time_ms,"DEC")*/
-// if(loc_time_sec != loc_prev_time_sec)
-  if(loc_time_sec != loc_prev_time_sec)
-  {
-
-   /* UART_PRINTFINTEGER(HAL_RCC_GetSysClockFreq()+1,"DEC")*/
-    UART_PRINTFINTEGER(loc_time_ms,"DEC")
-  }
-  else
-  {
-    /*nothing to do*/
-  }
 
   //loc_adc_val = adc_GetValue(&hadc1);
   button_Processing();
@@ -134,13 +112,16 @@ void main_heartbeat(void)
   {
     if((loc_time_sec % 2) == 0)
     {
-      HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
+      /*Do not use this LED, because it uses TFT control PIN (SPI1_SCK, D13)*/
+    /*  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET); */
     }
     else
     {
-      HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
+      /*Do not use this LED, because it uses TFT control PIN (SPI1_SCK, D13)*/
+    /*  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET); */
     }
     loc_prev_time_sec = loc_time_sec;
+    UART_PRINTFINTEGER(loc_time_sec,"DEC")
   }
   else
   {
