@@ -18,11 +18,12 @@ extern SPI_HandleTypeDef hspi1;
 static void main_Init(void);
 static void main_heartbeat(void);
 static void main_draw(void);
+static void main_buttons(void);
 
 
 void main_usercode(void)
 {
-  unsigned char loc_B_button_state = 0;
+
   uint8_t loc_buff[20];
   unsigned int loc_time;
   unsigned int loc_time_ms;
@@ -44,7 +45,7 @@ void main_usercode(void)
   /*Running LED*/
   if(loc_time_sec != loc_prev_time_sec)
   {
- 
+
   }
   else
   {
@@ -52,16 +53,7 @@ void main_usercode(void)
   }
 
   //loc_adc_val = adc_GetValue(&hadc1);
-  button_Processing();
-  loc_B_button_state = button_GetButtonState('B',6);
-  if(loc_B_button_state != 0)
-  {
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_SET);
-  }
-  else
-  {
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_RESET);
-  }
+
 
   loc_prev_time_sec = loc_time_sec;
   loc_prev_time_ms = loc_time_ms;
@@ -110,13 +102,21 @@ void main_Init(void)
 void main_heartbeat(void)
 {
   uint32_t loc_time_sec;
+  uint32_t loc_time_ms;
   static uint32_t loc_prev_time_sec = 0;
   
   loc_time_sec = tim_GetTimeFromStartSEC();
   
   if(loc_prev_time_sec != loc_time_sec)
   {
-    UART_PRINTFINTEGER(loc_time_sec,"DEC")
+    
+    loc_time_ms = tim_GetTimeFromStartMS();
+    DWT_Delay_ms(21);
+    loc_time_ms = tim_GetTimeFromStartMS() - loc_time_ms;
+    UART_PRINTFINTEGER(loc_time_ms,"DEC")  
+      
+      
+      
     /*
      * LED2 is occupied by SCI
     if((loc_time_sec % 2) == 0)
@@ -156,3 +156,42 @@ void main_draw(void)
 
   return;
 }
+
+void main_buttons()
+{
+  unsigned char loc_B_button_state = 0;
+  
+  button_Processing();
+  loc_B_button_state = button_GetButtonState('B',6);
+  if(loc_B_button_state != 0)
+  {
+    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_SET);
+  }
+  else
+  {
+    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_RESET);
+  }
+  
+  return;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
