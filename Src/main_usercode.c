@@ -26,8 +26,8 @@ void main_usercode(void)
 
   uint8_t loc_buff[20];
   unsigned int loc_time;
-  unsigned int loc_time_ms;
-  unsigned int loc_time_sec;
+  unsigned int loc_time_ms = 0;
+  unsigned int loc_time_sec = 0;
   static unsigned int loc_prev_time_ms=0;
   static unsigned int loc_prev_time_sec=0;
   uint8_t loc_srbyte = 1;
@@ -102,18 +102,13 @@ void main_Init(void)
 void main_heartbeat(void)
 {
   uint32_t loc_time_sec;
-  uint32_t loc_time_ms;
   static uint32_t loc_prev_time_sec = 0;
   
   loc_time_sec = tim_GetTimeFromStartSEC();
   
   if(loc_prev_time_sec != loc_time_sec)
   {
-    
-    loc_time_ms = tim_GetTimeFromStartMS();
-    DWT_Delay_ms(21);
-    loc_time_ms = tim_GetTimeFromStartMS() - loc_time_ms;
-    UART_PRINTFINTEGER(loc_time_ms,"DEC")  
+    UART_PRINTFINTEGER(loc_time_sec,"DEC")  
       
       
       
