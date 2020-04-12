@@ -45,7 +45,8 @@ uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t chByte)
 
   if(par_SPI != NULL)
   {
-    HAL_SPI_TransmitReceive(par_SPI,&loc_writebyte,&loc_readbyte,1,200);
+    HAL_SPI_TransmitReceive(par_SPI,&loc_writebyte,&loc_readbyte,1,0);
+
     /*
     HAL_SPI_Transmit(par_SPI,&loc_writebyte,1,200);
     
