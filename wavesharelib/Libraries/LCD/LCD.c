@@ -55,8 +55,8 @@ static void lcd_write_word(uint16_t hwData)
 {
     __LCD_DC_SET();
     __LCD_CS_CLR();
-    __LCD_WRITE_BYTE(hwData >> 8);
-    __LCD_WRITE_BYTE(hwData & 0xFF);
+    __LCD_WRITE_BYTE(((uint8_t)(hwData >> 8)));
+    __LCD_WRITE_BYTE(((uint8_t)(hwData & 0xFF)));
     __LCD_CS_SET();
 }
 

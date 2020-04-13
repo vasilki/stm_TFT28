@@ -23,6 +23,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "LIB_Config.h"
 #include "SPI.h"
+#include "uart.h"
+
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -38,25 +40,16 @@
   * @param  tSPIx: where x can be 1 , 2 or 3 to select the SPI pripheral.
   * @retval chByte: Receive an byte from SPI bus
   */
+
 uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t chByte)
 {		
   uint8_t loc_writebyte = chByte;
   uint8_t loc_readbyte = 0;
+  HAL_StatusTypeDef loc_status = HAL_ERROR;
 
   if(par_SPI != NULL)
   {
-    HAL_SPI_TransmitReceive(par_SPI,&loc_writebyte,&loc_readbyte,1,0);
-
-    /*
-    HAL_SPI_Transmit(par_SPI,&loc_writebyte,1,200);
-    
-    HAL_SPI_Receive(par_SPI,&loc_readbyte,1,200);
-    
-    
-HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-HAL_StatusTypeDef HAL_SPI_TransmitReceive(SPI_HandleTypeDef *hspi, uint8_t *pTxData, uint8_t *pRxData, uint16_t Size, uint32_t Timeout);    
-    */
+    loc_status = HAL_SPI_TransmitReceive(par_SPI,&loc_writebyte,&loc_readbyte,1,10);
   }
   else
   {
