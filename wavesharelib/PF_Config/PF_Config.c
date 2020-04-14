@@ -61,6 +61,15 @@ static void device_init(void)
 static void driver_init(SPI_HandleTypeDef *par_hspi)
 {
   lcd_init(par_hspi);
+  DWT_Delay_ms(1000);
+  lcd_clear_screen(RED);
+  DWT_Delay_ms(1000);
+  lcd_clear_screen(GREEN);
+  DWT_Delay_ms(1000);
+  lcd_clear_screen(BLUE);
+  DWT_Delay_ms(1000);
+  lcd_clear_screen(WHITE);
+
 }
 
 static void port_init(void) 

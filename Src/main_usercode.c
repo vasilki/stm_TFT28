@@ -103,14 +103,14 @@ void main_heartbeat(void)
 {
   uint32_t loc_time_sec;
   static uint32_t loc_prev_time_sec = 0;
-  
+
   loc_time_sec = tim_GetTimeFromStartSEC();
   
   if(loc_prev_time_sec != loc_time_sec)
   {
-    UART_PRINTFINTEGER(loc_time_sec,"DEC")  
-      
-      
+    UART_PRINTFINTEGER(loc_time_sec,"DEC")
+
+
       
     /*
      * LED2 is occupied by SCI
