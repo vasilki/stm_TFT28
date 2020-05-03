@@ -1,6 +1,13 @@
 # stm_LCD_WH1602
 Connecting TFT 2.8 WaveShare to the Nucleo F401RE
 
+BL:D9(CN5)
+DC:D7(CN9)
+CS:D10(CN5)
+
+SCK/D13(CN5)
+MOSI/D11(CN5)
+MISO/D12(CN5)
 
 Environment:
 STM32 NUCLEO-F401RE
