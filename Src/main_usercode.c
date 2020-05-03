@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdio.h>
 //#include "adc.h"
-#include "button_handle.h"
 #include "timers.h"
 #include "uart.h"
 #include "dwt_stm32_delay.h"
@@ -69,10 +68,6 @@ void main_Init(void)
 
   if(loc_B_IsFirstTime == 0)
   {
-    /*BUTTON init*/
-    button_SetActiveButtons('C',13);
-    button_SetActiveButtons('B',6);
-
     /*TIM init*/
     tim_InitTimer(&htim9);
 
@@ -81,7 +76,7 @@ void main_Init(void)
     
     /*UART init*/
     uart_Init(&huart1);
-    uart_PrintfBuildVersion(&huart1);
+    uart_PrintfBuildVersion();
     
     /*TFT2.8 init*/
     system_init(&hspi1);
@@ -154,18 +149,7 @@ void main_draw(void)
 
 void main_buttons()
 {
-  unsigned char loc_B_button_state = 0;
-  
-  button_Processing();
-  loc_B_button_state = button_GetButtonState('B',6);
-  if(loc_B_button_state != 0)
-  {
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_SET);
-  }
-  else
-  {
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_RESET);
-  }
+
   
   return;
 }
