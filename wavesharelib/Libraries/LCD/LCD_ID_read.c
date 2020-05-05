@@ -6,15 +6,6 @@
 #include "uart.h"
 #include "dwt_stm32_delay.h"
 
-#ifndef (LCD_RST_GPIO)
-//#define LCD_RST_GPIO LCD_RST_GPIO_Port
-#endif
-
-#ifndef (LCD_DC_GPIO)
-//#define LCD_DC_GPIO LCD_DC_GPIO_Port
-//#define LCD_DC_PIN     LCD_DC_Pin
-#endif
-
 
 #define LCD_RST LCD_RST_Pin
 #define LCD_CS A3_Pin
@@ -60,6 +51,28 @@ uint8_t d1526nvm[]  = { (0xE2), 1, 0x3F};
 uint8_t *unlock     = NULL;
 uint8_t *page_N     = NULL;
 
+static void LCD_ID_read_regs(char *title);
+static void lcdInit();
+static void lcdReset();
+static void LCD_ID_read_regs(char *title);
+
+void lcdWrite8(uint16_t data);
+uint16_t lcdRead8();
+
+void lcdSetWriteDir();
+void lcdSetReadDir();
+void lcdWriteData(uint16_t data);
+void lcdWriteCommand(uint16_t command);
+
+uint8_t lcdReadData8();
+
+uint16_t lcdReadData16();
+
+
+void lcdWriteRegister(uint16_t addr, uint16_t data);
+void pushCommand(uint8_t command, uint8_t *block, int8_t n);
+
+
 void LCD_ID_setup()
 {
    /* Serial.begin(9600);
@@ -78,7 +91,7 @@ void LCD_ID_setup()
     //    unlock = unlock_5310;
     //    page_N = d5310_1_in;
     //    for (uint16_t i = 0x00; i <= 0xFE; i++) readReg(i, 10, "f.k");
-    read_regs("diagnose any controller");
+    LCD_ID_read_regs("diagnose any controller");
     //    read_xxxx("mystery");
     //    read_5310_P0("NT35310 P0");
     //    read_5310_P1("NT35310 P1");
@@ -129,7 +142,7 @@ void readReg(uint16_t reg, uint8_t n, const char *msg)
     uart_Printf(msg);
 }
 
-void lcdInit()
+static void lcdInit()
 {
     //@pinMode(LCD_CS, OUTPUT);
     HAL_GPIO_WritePin(LCD_CS_GPIO, LCD_CS, GPIO_PIN_SET);
@@ -143,7 +156,7 @@ void lcdInit()
     HAL_GPIO_WritePin(LCD_RST_GPIO, LCD_RST, GPIO_PIN_SET);
 }
 
-void lcdReset()
+static void lcdReset()
 {
     HAL_GPIO_WritePin(LCD_RST_GPIO, LCD_RST, GPIO_PIN_RESET);
     HAL_Delay(2);
@@ -165,21 +178,21 @@ void lcdWrite8(uint16_t data)
 
 uint16_t lcdRead8()
 {
-    uint16_t result = HAL_GPIO_ReadPin(LCD_D7);
+    uint16_t result = HAL_GPIO_ReadPin(LCD_D7_GPIO, LCD_D7);
     result <<= 1;
-    result |= HAL_GPIO_ReadPin(LCD_D6);
+    result |= HAL_GPIO_ReadPin(LCD_D6_GPIO, LCD_D6);
     result <<= 1;
-    result |= HAL_GPIO_ReadPin(LCD_D5);
+    result |= HAL_GPIO_ReadPin(LCD_D5_GPIO, LCD_D5);
     result <<= 1;
-    result |= HAL_GPIO_ReadPin(LCD_D4);
+    result |= HAL_GPIO_ReadPin(LCD_D4_GPIO, LCD_D4);
     result <<= 1;
-    result |= HAL_GPIO_ReadPin(LCD_D3);
+    result |= HAL_GPIO_ReadPin(LCD_D3_GPIO, LCD_D3);
     result <<= 1;
-    result |= HAL_GPIO_ReadPin(LCD_D2);
+    result |= HAL_GPIO_ReadPin(LCD_D2_GPIO, LCD_D2);
     result <<= 1;
-    result |= HAL_GPIO_ReadPin(LCD_D1);
+    result |= HAL_GPIO_ReadPin(LCD_D1_GPIO, LCD_D1);
     result <<= 1;
-    result |= HAL_GPIO_ReadPin(LCD_D0);
+    result |= HAL_GPIO_ReadPin(LCD_D0_GPIO, LCD_D0);
 
     return result;
 }
@@ -312,7 +325,7 @@ void pushCommand(uint8_t command, uint8_t *block, int8_t n)
 // make all the functions static.
 // the linker will discard unused anonymous strings.
 
-static void read_regs(char *title)
+static void LCD_ID_read_regs(char *title)
 {
     uart_Printf(title);
     readReg(0x00, 2, "ID: ILI9320, ILI9325, ILI9335, ...");
