@@ -24,8 +24,7 @@
 //Macro Definition
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
-//SPI
+#include "main.h"
 #include "SPI.h"
 
 /* Exported types ------------------------------------------------------------*/

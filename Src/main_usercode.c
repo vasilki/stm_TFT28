@@ -1,7 +1,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
-#include "stm32f4xx_hal_spi.h"
 #include "LCD.h"
 #include "timers.h"
 #include "uart.h"
@@ -58,9 +57,7 @@ void main_usercode(void)
   
   return;
 }
-
-
-
+extern void lcd_init(SPI_HandleTypeDef *par_hspi);
 void main_Init(void)
 {
   static uint8_t loc_B_IsFirstTime = 0;

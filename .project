@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>stm_TFT28</name>
-	<comment />
+	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -28,7 +28,7 @@
 		<link>
 			<name>stm_mylibs</name>
 			<type>2</type>
-			<location>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs</location>
+			<locationURI>$%257BPARENT-1-PROJECT_LOC%257D/stm_mylibs</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
