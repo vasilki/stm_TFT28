@@ -1,5 +1,5 @@
 # stm_LCD_WH1602
-Connecting TFT 2.8 WaveShare to the Nucleo F401RE
+Connecting TFT 2.8 WaveShare (HX83247D TFT and XPT2046 touch controller) to the Nucleo F401RE
 
 Pinout:
 TFT->STM32
@@ -17,3 +17,8 @@ STM32 NUCLEO-F401RE
 Linux Mint 18.2 Sonya
 STM32Cube_1.0 version 4.24.0.Repository is STM32Cube_FW_F4_V1.25.0.
 System Workbench for STM32 (Version: 1.13.2.201703061529) based on Eclipse IDE version Mars.2.Release 4.5.2
+
+
+Datasheets:
+https://static.chipdip.ru/lib/184/DOC001184533.pdf
+http://www.elechouse.com/elechouse/images/product/7tft_shield/XPT2046.pdf
