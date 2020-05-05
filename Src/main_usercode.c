@@ -30,7 +30,7 @@ void main_usercode(void)
   uint8_t loc_srbyte = 1;
 
   main_Init();
-
+return;
   tim_UpdatePeriod();
   loc_time = tim_GetPeriod();
   loc_time_sec = tim_GetTimeFromStartSEC();

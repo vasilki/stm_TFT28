@@ -77,12 +77,12 @@ void LCD_ID_setup()
 {
    /* Serial.begin(9600);
     while (!Serial) ;*/
-    uart_Printf("Read Registers on MCUFRIEND UNO shield");
-    uart_Printf("controllers either read as single 16-bit");
-    uart_Printf("e.g. the ID is at readReg(0)");
-    uart_Printf("or as a sequence of 8-bit values");
-    uart_Printf("in special locations (first is dummy)");
-    uart_Printf("");
+    uart_Printf("Read Registers on MCUFRIEND UNO shield\n");
+    uart_Printf("controllers either read as single 16-bit\n");
+    uart_Printf("e.g. the ID is at readReg(0)\n");
+    uart_Printf("or as a sequence of 8-bit values\n");
+    uart_Printf("in special locations (first is dummy)\n");
+    uart_Printf("\n");
     lcdInit();
     lcdReset();      //ensures that controller is in default state
     //    unlock = unlock_1520;
@@ -91,7 +91,7 @@ void LCD_ID_setup()
     //    unlock = unlock_5310;
     //    page_N = d5310_1_in;
     //    for (uint16_t i = 0x00; i <= 0xFE; i++) readReg(i, 10, "f.k");
-    LCD_ID_read_regs("diagnose any controller");
+    LCD_ID_read_regs("diagnose any controller\n");
     //    read_xxxx("mystery");
     //    read_5310_P0("NT35310 P0");
     //    read_5310_P1("NT35310 P1");
@@ -119,27 +119,36 @@ void printhex(uint8_t val)
 
 void readReg(uint16_t reg, uint8_t n, const char *msg)
 {
+  char loc_buff[80];
+
     uint8_t val8;
     lcdReset();
     lcdSetWriteDir();
     if (unlock) pushCommand(unlock[0], unlock + 2, unlock[1]);
     if (page_N) pushCommand(page_N[0], page_N + 2, page_N[1]);
-    uart_Printf("reg(0x");
+    snprintf(loc_buff,sizeof(loc_buff),"reg(0x%02x%02x)",reg >> 8,reg);
+    uart_Printf(loc_buff);
+   /* uart_Printf("reg(0x");
     uart_PrintfInteger(reg >> 8,"HEX");
     uart_PrintfInteger(reg,"HEX");
-    uart_Printf(")");
+    uart_Printf(")");*/
     lcdWriteCommand(reg);
     lcdSetReadDir();
     while (n--) {
         val8 = lcdReadData8();
-        uart_Printf(" ");
-        uart_PrintfInteger(val8,"HEX");
+        snprintf(loc_buff,sizeof(loc_buff)," %02x",val8);
+        uart_Printf(loc_buff);
+        /*uart_Printf(" ");
+        uart_PrintfInteger(val8,"HEX");*/
     }
     lcdSetWriteDir();
     HAL_GPIO_WritePin(LCD_CS_GPIO, LCD_CS, GPIO_PIN_SET);
 
-    uart_Printf("\t");
+    uart_Printf(" ");
     uart_Printf(msg);
+    uart_Printf("\n");
+
+    return;
 }
 
 static void lcdInit()
