@@ -57,7 +57,7 @@ void main_usercode(void)
   
   return;
 }
-extern void lcd_init(SPI_HandleTypeDef *par_hspi);
+
 void main_Init(void)
 {
   static uint8_t loc_B_IsFirstTime = 0;
