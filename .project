@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>stm_TFT28</name>
-	<comment></comment>
+	<comment />
 	<projects>
 	</projects>
 	<buildSpec>
@@ -28,22 +28,22 @@
 		<link>
 			<name>dwt_stm32_delay</name>
 			<type>2</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/dwt_stm32_delay</locationURI>
+			<location>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/dwt_stm32_delay</location>
 		</link>
 		<link>
 			<name>stm_mylibs</name>
 			<type>2</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs</locationURI>
+			<location>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs</location>
 		</link>
 		<link>
 			<name>timers</name>
 			<type>2</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/timers</locationURI>
+			<location>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/timers</location>
 		</link>
 		<link>
 			<name>uart</name>
 			<type>2</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/uart</locationURI>
+			<location>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/uart</location>
 		</link>
 	</linkedResources>
 </projectDescription>

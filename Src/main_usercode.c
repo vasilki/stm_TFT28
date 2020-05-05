@@ -38,7 +38,7 @@ void main_usercode(void)
   
   /*HeartBeat*/
   main_heartbeat();
-  main_draw();
+  //main_draw();
   /*Running LED*/
   if(loc_time_sec != loc_prev_time_sec)
   {
@@ -57,7 +57,9 @@ void main_usercode(void)
   
   return;
 }
-extern void lcd_init(SPI_HandleTypeDef *par_hspi);
+
+extern void LCD_ID_setup();
+
 void main_Init(void)
 {
   static uint8_t loc_B_IsFirstTime = 0;
@@ -75,8 +77,8 @@ void main_Init(void)
     uart_PrintfBuildVersion();
 
     /*TFT2.8 init*/
-    lcd_init(&hspi1);
-
+   // lcd_init(&hspi1);
+    LCD_ID_setup();
 
     loc_B_IsFirstTime = 1;
   }

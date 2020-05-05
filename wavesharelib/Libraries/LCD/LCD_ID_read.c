@@ -6,21 +6,47 @@
 #include "uart.h"
 #include "dwt_stm32_delay.h"
 
+#ifndef (LCD_RST_GPIO)
+//#define LCD_RST_GPIO LCD_RST_GPIO_Port
+#endif
 
-#define LCD_RST A4 //A1
-#define LCD_CS A3
-#define LCD_RS A2
-#define LCD_WR A1
-#define LCD_RD A0
+#ifndef (LCD_DC_GPIO)
+//#define LCD_DC_GPIO LCD_DC_GPIO_Port
+//#define LCD_DC_PIN     LCD_DC_Pin
+#endif
 
-#define LCD_D0 8
-#define LCD_D1 9
-#define LCD_D2 2 //10
-#define LCD_D3 3 //11
-#define LCD_D4 4
-#define LCD_D5 5 //13
-#define LCD_D6 6
-#define LCD_D7 7
+
+#define LCD_RST LCD_RST_Pin
+#define LCD_CS A3_Pin
+#define LCD_RS A2_Pin
+#define LCD_WR A1_Pin
+#define LCD_RD A0_Pin
+
+#define LCD_RST_GPIO LCD_RST_GPIO_Port
+#define LCD_CS_GPIO A3_GPIO_Port
+#define LCD_RS_GPIO A2_GPIO_Port
+#define LCD_WR_GPIO A1_GPIO_Port
+#define LCD_RD_GPIO A0_GPIO_Port
+
+
+#define LCD_D0 D0_Pin
+#define LCD_D1 D1_Pin
+#define LCD_D2 D2_Pin
+#define LCD_D3 D3_Pin
+#define LCD_D4 D4_Pin
+#define LCD_D5 D5_Pin
+#define LCD_D6 D6_Pin
+#define LCD_D7 LCD_DC_Pin
+
+
+#define LCD_D0_GPIO D0_GPIO_Port
+#define LCD_D1_GPIO D1_GPIO_Port
+#define LCD_D2_GPIO D2_GPIO_Port
+#define LCD_D3_GPIO D3_GPIO_Port
+#define LCD_D4_GPIO D4_GPIO_Port
+#define LCD_D5_GPIO D5_GPIO_Port
+#define LCD_D6_GPIO D6_GPIO_Port
+#define LCD_D7_GPIO LCD_DC_GPIO_Port
 
 uint8_t unlock_1520[]     = { (0xB0), 2, 0x00, 0x00 };
 uint8_t unlock_1526[]     = { (0xB0), 2, 0x3F, 0x3F };
@@ -34,16 +60,16 @@ uint8_t d1526nvm[]  = { (0xE2), 1, 0x3F};
 uint8_t *unlock     = NULL;
 uint8_t *page_N     = NULL;
 
-void setup()
+void LCD_ID_setup()
 {
    /* Serial.begin(9600);
     while (!Serial) ;*/
-    uart_Printf("Read Registers on MCUFRIEND UNO shield);
-    uart_Printf("controllers either read as single 16-bit);
-    uart_Printf("e.g. the ID is at readReg(0));
-    uart_Printf("or as a sequence of 8-bit values);
-    uart_Printf("in special locations (first is dummy));
-    uart_Printf(");
+    uart_Printf("Read Registers on MCUFRIEND UNO shield");
+    uart_Printf("controllers either read as single 16-bit");
+    uart_Printf("e.g. the ID is at readReg(0)");
+    uart_Printf("or as a sequence of 8-bit values");
+    uart_Printf("in special locations (first is dummy)");
+    uart_Printf("");
     lcdInit();
     lcdReset();      //ensures that controller is in default state
     //    unlock = unlock_1520;
@@ -75,7 +101,7 @@ void loop()
 void printhex(uint8_t val)
 {
     if (val < 0x10) uart_Printf("0");
-    uart_Printf(val, HEX);
+    uart_PrintfInteger(val, "HEX");
 }
 
 void readReg(uint16_t reg, uint8_t n, const char *msg)
@@ -114,14 +140,14 @@ void lcdInit()
     //@pinMode(LCD_RD, OUTPUT);
     HAL_GPIO_WritePin(LCD_RD_GPIO, LCD_RD, GPIO_PIN_SET);
     //@pinMode(LCD_RST, OUTPUT);
-    HAL_GPIO_WritePin(LCD_RS_GPIO, LCD_RST, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LCD_RST_GPIO, LCD_RST, GPIO_PIN_SET);
 }
 
 void lcdReset()
 {
-    HAL_GPIO_WritePin(LCD_RS_GPIO, LCD_RST, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LCD_RST_GPIO, LCD_RST, GPIO_PIN_RESET);
     HAL_Delay(2);
-    HAL_GPIO_WritePin(LCD_RS_GPIO, LCD_RST, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LCD_RST_GPIO, LCD_RST, GPIO_PIN_SET);
     HAL_Delay(10);             //allow controller to re-start
 }
 
@@ -160,7 +186,7 @@ uint16_t lcdRead8()
 
 void lcdSetWriteDir()
 {
-    uint8_t mode = OUTPUT;
+    uint8_t mode = GPIO_PIN_RESET;
     //@pinMode(LCD_D0, mode);
     //@pinMode(LCD_D1, mode);
     //@pinMode(LCD_D2, mode);
@@ -174,7 +200,7 @@ void lcdSetWriteDir()
 
 void lcdSetReadDir()
 {
-    uint8_t mode = INPUT;
+    uint8_t mode = GPIO_PIN_SET;
     //@pinMode(LCD_D0, mode);
     //@pinMode(LCD_D1, mode);
     //@pinMode(LCD_D2, mode);
