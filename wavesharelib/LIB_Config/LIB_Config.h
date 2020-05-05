@@ -44,7 +44,7 @@
 #define LCD_CLK_GPIO   GPIOA
 #define LCD_SDI_GPIO   GPIOA
 #define LCD_SDO_GPIO   GPIOA
-
+#define LCD_RST_GPIO   LCD_RST_GPIO_Port
 
 //#define LCD_RST_PIN    GPIO_Pin_0
 #define LCD_BKL_PIN    LCD_BKL_Pin
@@ -53,9 +53,11 @@
 #define LCD_CLK_PIN    GPIO_Pin_5
 #define LCD_SDO_PIN    GPIO_Pin_6
 #define LCD_SDI_PIN    GPIO_Pin_7
+#define LCD_RST_PIN    LCD_RST_Pin
 
-//#define __LCD_RST_SET()     GPIO_WriteBit(LCD_RST_GPIO, LCD_RST_PIN, Bit_SET)
-//#define __LCD_RST_CLR()     GPIO_WriteBit(LCD_RST_GPIO, LCD_RST_PIN, Bit_RESET)
+
+#define __LCD_RST_SET()     HAL_GPIO_WritePin(LCD_RST_GPIO, LCD_RST_PIN, GPIO_PIN_SET)
+#define __LCD_RST_CLR()     HAL_GPIO_WritePin(LCD_RST_GPIO, LCD_RST_PIN, GPIO_PIN_RESET)
 
 #define __LCD_BKL_SET()    HAL_GPIO_WritePin(LCD_BKL_GPIO, LCD_BKL_PIN, GPIO_PIN_SET)
 #define __LCD_BKL_CLR()    HAL_GPIO_WritePin(LCD_BKL_GPIO, LCD_BKL_PIN, GPIO_PIN_RESET)

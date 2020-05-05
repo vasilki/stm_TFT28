@@ -22,6 +22,7 @@
 #include "LIB_Config.h"
 #include "Fonts.h"
 #include "LCD.h"
+#include "MacroAndConst.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -234,8 +235,8 @@ void lcd_draw_line(uint16_t hwXpos0, //specify x0 position.
 {
 	int x = hwXpos1 - hwXpos0;
   int y = hwYpos1 - hwYpos0;
-  int dx = abs(x), sx = hwXpos0 < hwXpos1 ? 1 : -1;
-  int dy = -abs(y), sy = hwYpos0 < hwYpos1 ? 1 : -1;
+  int dx = ABS(x), sx = hwXpos0 < hwXpos1 ? 1 : -1;
+  int dy = -ABS(y), sy = hwYpos0 < hwYpos1 ? 1 : -1;
   int err = dx + dy, e2;
 
 	if (hwXpos0 >= LCD_WIDTH || hwYpos0 >= LCD_HEIGHT || hwXpos1 >= LCD_WIDTH || hwYpos1 >= LCD_HEIGHT) {
@@ -360,9 +361,9 @@ void lcd_draw_rect(uint16_t hwXpos,  //specify x position.
 void lcd_init(SPI_HandleTypeDef *par_hspi)
 {
   GL_pLCDSPI = par_hspi;
-  //  __LCD_RST_CLR();
-  //  HAL_Delay(100);
-  //  __LCD_RST_SET();
+  __LCD_RST_CLR();
+  HAL_Delay(100);
+  __LCD_RST_SET();
   __LCD_CS_SET();
   HAL_Delay(50);
   __LCD_BKL_CLR();

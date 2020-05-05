@@ -26,9 +26,24 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>dwt_stm32_delay</name>
+			<type>2</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/dwt_stm32_delay</locationURI>
+		</link>
+		<link>
 			<name>stm_mylibs</name>
 			<type>2</type>
-			<locationURI>$%257BPARENT-1-PROJECT_LOC%257D/stm_mylibs</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs</locationURI>
+		</link>
+		<link>
+			<name>timers</name>
+			<type>2</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/timers</locationURI>
+		</link>
+		<link>
+			<name>uart</name>
+			<type>2</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/stm_mylibs/uart</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

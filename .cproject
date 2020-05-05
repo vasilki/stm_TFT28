@@ -32,7 +32,7 @@
 								</outputEntries>
 							</builder>
 							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.2042143186" name="MCU GCC Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler">
-								<option defaultValue="gnu.c.optimization.level.none" id="fr.ac6.managedbuild.gnu.c.compiler.option.optimization.level.713557878" name="Optimization Level" superClass="fr.ac6.managedbuild.gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="fr.ac6.managedbuild.gnu.c.optimization.level.none" valueType="enumerated"/>
+								<option defaultValue="gnu.c.optimization.level.none" id="fr.ac6.managedbuild.gnu.c.compiler.option.optimization.level.713557878" name="Optimization Level" superClass="fr.ac6.managedbuild.gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="fr.ac6.managedbuild.gnu.c.optimization.level.more" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.47392285" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.109944224" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="../Inc"/>
@@ -104,26 +104,25 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<folderInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1345944002.806157878" name="/" resourcePath="stm_mylibs">
-						<toolChain id="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug.602581383" name="Ac6 STM32 MCU GCC" superClass="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug" unusedChildren="">
-							<option id="fr.ac6.managedbuild.option.gnu.cross.prefix.16546129.27429102" name="Prefix" superClass="fr.ac6.managedbuild.option.gnu.cross.prefix.16546129"/>
-							<option id="fr.ac6.managedbuild.option.gnu.cross.mcu.1023657336.1545524484" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu.1023657336"/>
-							<option id="fr.ac6.managedbuild.option.gnu.cross.board.1655806221.674937666" name="Board" superClass="fr.ac6.managedbuild.option.gnu.cross.board.1655806221"/>
-							<option id="fr.ac6.managedbuild.option.gnu.cross.instructionSet.1017534198.704218947" name="Instruction Set" superClass="fr.ac6.managedbuild.option.gnu.cross.instructionSet.1017534198"/>
-							<option id="fr.ac6.managedbuild.option.gnu.cross.fpu.572863267.2143741538" name="Floating point hardware" superClass="fr.ac6.managedbuild.option.gnu.cross.fpu.572863267"/>
-							<option id="fr.ac6.managedbuild.option.gnu.cross.floatabi.2055600333.719474924" name="Floating-point ABI" superClass="fr.ac6.managedbuild.option.gnu.cross.floatabi.2055600333"/>
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="fr.ac6.managedbuild.targetPlatform.gnu.cross" isAbstract="false" osList="all" superClass="fr.ac6.managedbuild.targetPlatform.gnu.cross"/>
-							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.299054042" name="MCU GCC Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.2042143186">
-								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.844347817" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c"/>
-								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s.1551861682" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s"/>
+					<folderInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1345944002.1957364496" name="/" resourcePath="stm_mylibs">
+						<toolChain id="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug.287470875" name="Ac6 STM32 MCU GCC" superClass="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug" unusedChildren="">
+							<option id="fr.ac6.managedbuild.option.gnu.cross.prefix.16546129.1964158092" name="Prefix" superClass="fr.ac6.managedbuild.option.gnu.cross.prefix.16546129"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.mcu.1023657336.1643214559" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu.1023657336"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.board.1655806221.1986014792" name="Board" superClass="fr.ac6.managedbuild.option.gnu.cross.board.1655806221"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.instructionSet.1017534198.1528476375" name="Instruction Set" superClass="fr.ac6.managedbuild.option.gnu.cross.instructionSet.1017534198"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.fpu.572863267.247949875" name="Floating point hardware" superClass="fr.ac6.managedbuild.option.gnu.cross.fpu.572863267"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.floatabi.2055600333.530219535" name="Floating-point ABI" superClass="fr.ac6.managedbuild.option.gnu.cross.floatabi.2055600333"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.948968657" name="MCU GCC Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.2042143186">
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.694489330" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c"/>
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s.827938304" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s"/>
 							</tool>
-							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.1837910868" name="MCU G++ Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.1995025471"/>
-							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.linker.1717817544" name="MCU GCC Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.linker.199626604"/>
-							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.805104936" name="MCU G++ Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.441990574"/>
-							<tool id="fr.ac6.managedbuild.tool.gnu.archiver.907527336" name="MCU GCC Archiver" superClass="fr.ac6.managedbuild.tool.gnu.archiver.1365558104"/>
-							<tool id="fr.ac6.managedbuild.tool.gnu.cross.assembler.1323142023" name="MCU GCC Assembler" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.1060353629">
-								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1811581897" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.assembler.input.1662463615" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.input"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.1918585087" name="MCU G++ Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.1995025471"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.linker.1374257255" name="MCU GCC Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.linker.199626604"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.1177160261" name="MCU G++ Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.441990574"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.archiver.866575361" name="MCU GCC Archiver" superClass="fr.ac6.managedbuild.tool.gnu.archiver.1365558104"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.assembler.1892276144" name="MCU GCC Assembler" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.1060353629">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.287692386" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.assembler.input.1000123022" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.input"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
@@ -132,7 +131,7 @@
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="startup"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="stm_mylibs"/>
+						<entry excluding="adc/|led/|lcd_1602/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="stm_mylibs"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="wavesharelib"/>
 					</sourceEntries>
 				</configuration>

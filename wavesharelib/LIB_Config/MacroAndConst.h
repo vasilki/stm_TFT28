@@ -7,6 +7,7 @@
 
 #define MAX(a, b)  (((a) > (b)) ? (a) : (b))
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
+#define ABS(N) ((N<0)?(-N):(N))
 
 #define BIT(__N)         ((uint8_t)(1 << __N)) 
 
