@@ -19,10 +19,8 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "LIB_Config.h"
-#include <stdio.h>
-#include <stdlib.h>
-//#include "stm32f4xx_hal.h"
+
+#include "stm32f4xx_hal.h"
 
 //Platform Configuration
 

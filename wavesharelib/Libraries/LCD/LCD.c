@@ -20,8 +20,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "LIB_Config.h"
-#include "Fonts.h"
 #include "LCD.h"
+#include "Fonts.h"
 
 /* Private typedef -----------------------------------------------------------*/
 

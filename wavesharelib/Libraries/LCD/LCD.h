@@ -24,9 +24,6 @@
 #define _LCD_H_
 
 /* Includes ------------------------------------------------------------------*/
-#include "MacroAndConst.h"
-#include <math.h>
-#include <stdlib.h>
 #include "stm32f4xx_hal_spi.h"
 
 /* Exported types ------------------------------------------------------------*/
@@ -101,6 +98,6 @@ extern void lcd_draw_line(uint16_t hwXpos0, //specify x0 position.
                       uint16_t hwColor); //specify the color of the line
 
 
-#endif
+#endif /*_LCD_H_*/
 /*-------------------------------END OF FILE-------------------------------*/
 

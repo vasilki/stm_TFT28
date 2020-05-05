@@ -23,7 +23,6 @@
 #define _USE_SPI_H_
 
 /* Includes ------------------------------------------------------------------*/
-#include "MacroAndConst.h"
 #include "stm32f4xx_hal_spi.h"
 
 /* Exported types ------------------------------------------------------------*/

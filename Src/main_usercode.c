@@ -1,12 +1,13 @@
 #include "stm32f4xx_hal.h"
+#include "PF_Config.h"
+#include "LCD.h"
 #include <string.h>
 #include <stdio.h>
 //#include "adc.h"
 #include "timers.h"
 #include "uart.h"
 #include "dwt_stm32_delay.h"
-#include "PF_Config.h"
-#include "LIB_Config.h"
+
 
 extern UART_HandleTypeDef huart1; /*declared in main.c*/
 //extern ADC_HandleTypeDef hadc1; /*declared in main.c*/

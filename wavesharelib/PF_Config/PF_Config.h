@@ -25,7 +25,6 @@
 #define _USE_PF_CONFIG_H_
 
 /* Includes ------------------------------------------------------------------*/
-#include "MacroAndConst.h"  
 #include "stm32f4xx_hal_spi.h"
 extern uint16_t g_hwDevId;
 
