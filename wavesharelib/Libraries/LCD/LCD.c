@@ -20,8 +20,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "LIB_Config.h"
-#include "LCD.h"
 #include "Fonts.h"
+#include "LCD.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -34,7 +34,7 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-SPI_HandleTypeDef *GL_pLCDSPI = NULL;
+static SPI_HandleTypeDef *GL_pLCDSPI = NULL;
 
 
 static void lcd_write_byte(uint8_t chByte, uint8_t chCmd)
@@ -137,7 +137,7 @@ void lcd_display_char(uint16_t hwXpos, //specify x position.
 					   
     for (i = 0; i < chSize; i ++) {   
 		if (FONT_1206 == chSize) {
-			chTemp = c_chFont1206[chChr - 0x20][i];  
+			chTemp = c_chFont1206[chChr - 0x20][i];
 		} else if (FONT_1608 == chSize) { 
 			chTemp = c_chFont1608[chChr - 0x20][i];
 		}

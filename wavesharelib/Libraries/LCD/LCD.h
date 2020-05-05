@@ -24,7 +24,7 @@
 #define _LCD_H_
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal_spi.h"
+#include "stm32f4xx_hal.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -53,8 +53,6 @@
 
 #define LCD_CMD                0
 #define LCD_DATA               1
-
-extern SPI_HandleTypeDef *GL_pLCDSPI;
 
 /* Exported functions ------------------------------------------------------- */
 

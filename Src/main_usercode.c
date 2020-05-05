@@ -1,13 +1,11 @@
-#include "stm32f4xx_hal.h"
-#include "PF_Config.h"
-#include "LCD.h"
 #include <string.h>
 #include <stdio.h>
-//#include "adc.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_spi.h"
+#include "LCD.h"
 #include "timers.h"
 #include "uart.h"
 #include "dwt_stm32_delay.h"
-
 
 extern UART_HandleTypeDef huart1; /*declared in main.c*/
 //extern ADC_HandleTypeDef hadc1; /*declared in main.c*/
@@ -78,9 +76,9 @@ void main_Init(void)
     /*UART init*/
     uart_Init(&huart1);
     uart_PrintfBuildVersion();
-    
+
     /*TFT2.8 init*/
-    system_init(&hspi1);
+    lcd_init(&hspi1);
 
 
     loc_B_IsFirstTime = 1;
@@ -133,7 +131,7 @@ void main_heartbeat(void)
 
 void main_draw(void)
 {
-
+/*
   lcd_draw_rect(1, 1, 50, 50, RED);
 
   lcd_draw_rect(30, 40, 150, 100, RED);
@@ -143,7 +141,7 @@ void main_draw(void)
   lcd_draw_line(30, 220, 210, 240, RED);
   lcd_draw_line(30, 220, 120, 280, RED);
   lcd_draw_line(120, 280, 210, 240, RED);
-
+*/
 
   return;
 }
