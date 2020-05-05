@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2019 STMicroelectronics
+  * COPYRIGHT(c) 2020 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -49,8 +49,8 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define LCD_BL_Pin GPIO_PIN_7
-#define LCD_BL_GPIO_Port GPIOC
+#define LCD_BKL_Pin GPIO_PIN_7
+#define LCD_BKL_GPIO_Port GPIOC
 #define LCD_DC_Pin GPIO_PIN_8
 #define LCD_DC_GPIO_Port GPIOA
 #define LCD_CS_Pin GPIO_PIN_6

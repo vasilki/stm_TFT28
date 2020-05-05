@@ -33,8 +33,6 @@
 /* Exported macro ------------------------------------------------------------*/
 
 /*------------------------------------------------------------------------------------------------------*/
-//delay
-#include "dwt_stm32_delay.h"
 
 /*------------------------------------------------------------------------------------------------------*/
 //SPI
@@ -45,7 +43,7 @@
 #include "Fonts.h"
 
 //#define LCD_RST_GPIO   GPIOB
-#define LCD_BKL_GPIO   LCD_BL_GPIO_Port
+#define LCD_BKL_GPIO   LCD_BKL_GPIO_Port
 #define LCD_DC_GPIO    LCD_DC_GPIO_Port
 #define LCD_CS_GPIO    LCD_CS_GPIO_Port
 #define LCD_CLK_GPIO   GPIOA
@@ -54,7 +52,7 @@
 
 
 //#define LCD_RST_PIN    GPIO_Pin_0
-#define LCD_BKL_PIN    LCD_BL_Pin
+#define LCD_BKL_PIN    LCD_BKL_Pin
 #define LCD_DC_PIN     LCD_DC_Pin
 #define LCD_CS_PIN     LCD_CS_Pin
 #define LCD_CLK_PIN    GPIO_Pin_5

@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdio.h>
 //#include "adc.h"
-#include "button_handle.h"
 #include "timers.h"
 #include "uart.h"
 #include "dwt_stm32_delay.h"
@@ -18,15 +17,16 @@ extern SPI_HandleTypeDef hspi1;
 static void main_Init(void);
 static void main_heartbeat(void);
 static void main_draw(void);
+static void main_buttons(void);
 
 
 void main_usercode(void)
 {
-  unsigned char loc_B_button_state = 0;
+
   uint8_t loc_buff[20];
   unsigned int loc_time;
-  unsigned int loc_time_ms;
-  unsigned int loc_time_sec;
+  unsigned int loc_time_ms = 0;
+  unsigned int loc_time_sec = 0;
   static unsigned int loc_prev_time_ms=0;
   static unsigned int loc_prev_time_sec=0;
   uint8_t loc_srbyte = 1;
@@ -44,18 +44,16 @@ void main_usercode(void)
   main_heartbeat();
   main_draw();
 
-
-  //loc_adc_val = adc_GetValue(&hadc1);
-  button_Processing();
-  loc_B_button_state = button_GetButtonState('B',6);
-  if(loc_B_button_state != 0)
+  /*Running LED*/
+  if(loc_time_sec != loc_prev_time_sec)
   {
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_SET);
+
   }
   else
   {
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_RESET);
+    /*nothing to do*/
   }
+
 
   loc_prev_time_sec = loc_time_sec;
   loc_prev_time_ms = loc_time_ms;
@@ -71,10 +69,6 @@ void main_Init(void)
 
   if(loc_B_IsFirstTime == 0)
   {
-    /*BUTTON init*/
-    button_SetActiveButtons('C',13);
-    button_SetActiveButtons('B',6);
-
     /*TIM init*/
     tim_InitTimer(&htim9);
 
@@ -83,7 +77,7 @@ void main_Init(void)
     
     /*UART init*/
     uart_Init(&huart1);
-    uart_PrintfBuildVersion(&huart1);
+    uart_PrintfBuildVersion();
     
     /*TFT2.8 init*/
     system_init(&hspi1);
@@ -105,11 +99,17 @@ void main_heartbeat(void)
 {
   uint32_t loc_time_sec;
   static uint32_t loc_prev_time_sec = 0;
-  
+
   loc_time_sec = tim_GetTimeFromStartSEC();
   
   if(loc_prev_time_sec != loc_time_sec)
   {
+    UART_PRINTFINTEGER(loc_time_sec,"DEC")
+
+
+      
+    /*
+     * LED2 is occupied by SCI
     if((loc_time_sec % 2) == 0)
     {
       /*Do not use this LED, because it uses TFT control PIN (SPI1_SCK, D13)*/
@@ -120,6 +120,7 @@ void main_heartbeat(void)
       /*Do not use this LED, because it uses TFT control PIN (SPI1_SCK, D13)*/
     /*  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET); */
     }
+    */
     loc_prev_time_sec = loc_time_sec;
     UART_PRINTFINTEGER(loc_time_sec,"DEC")
   }
@@ -149,3 +150,31 @@ void main_draw(void)
 
   return;
 }
+
+void main_buttons()
+{
+
+  
+  return;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

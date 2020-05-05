@@ -33,8 +33,8 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 
-#define LCD_WIDTH    320
-#define LCD_HEIGHT   240
+#define LCD_WIDTH    240
+#define LCD_HEIGHT   320
 
 #define FONT_1206    12
 #define FONT_1608    16

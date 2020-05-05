@@ -12,8 +12,6 @@ LCD_DC:D7
 SD_CS:PWM/D6
 
 
-
-
 Environment:
 STM32 NUCLEO-F401RE
 Linux Mint 18.2 Sonya
