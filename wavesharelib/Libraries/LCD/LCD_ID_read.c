@@ -77,12 +77,13 @@ void LCD_ID_setup()
 {
    /* Serial.begin(9600);
     while (!Serial) ;*/
-    uart_Printf("Read Registers on MCUFRIEND UNO shield\n");
-    uart_Printf("controllers either read as single 16-bit\n");
-    uart_Printf("e.g. the ID is at readReg(0)\n");
-    uart_Printf("or as a sequence of 8-bit values\n");
-    uart_Printf("in special locations (first is dummy)\n");
-    uart_Printf("\n");
+    uart_Printf("Read Registers on MCUFRIEND UNO shield\n\r");
+    uart_Printf("controllers either read as single 16-bit\n\r");
+    uart_Printf("e.g. the ID is at readReg(0)\n\r");
+    uart_Printf("or as a sequence of 8-bit values\n\r");
+    uart_Printf("in special locations (first is dummy)\n\r");
+    uart_Printf("\n\r");
+
     lcdInit();
     lcdReset();      //ensures that controller is in default state
     //    unlock = unlock_1520;
@@ -91,7 +92,7 @@ void LCD_ID_setup()
     //    unlock = unlock_5310;
     //    page_N = d5310_1_in;
     //    for (uint16_t i = 0x00; i <= 0xFE; i++) readReg(i, 10, "f.k");
-    LCD_ID_read_regs("diagnose any controller\n");
+    LCD_ID_read_regs("diagnose any controller\n\r");
     //    read_xxxx("mystery");
     //    read_5310_P0("NT35310 P0");
     //    read_5310_P1("NT35310 P1");
@@ -146,7 +147,7 @@ void readReg(uint16_t reg, uint8_t n, const char *msg)
 
     uart_Printf(" ");
     uart_Printf(msg);
-    uart_Printf("\n");
+    uart_Printf("\n\r");
 
     return;
 }
