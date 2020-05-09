@@ -18,8 +18,6 @@
   ******************************************************************************
   */
 
-
-
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 
@@ -34,13 +32,13 @@
 
 /**
   * @brief Read or write an byte from or to SPI bus.
-  * @param  tSPIx: where x can be 1 , 2 or 3 to select the SPI peripheral.
-  * @retval chByte: Receive an byte from SPI bus
+  * @param  par_SPI: pointer to HAL descriptor of the SPI peripheral.
+  * @retval byte: Receive an byte from SPI bus
   */
 
-uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t chByte)
+uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t par_byte)
 {		
-  uint8_t loc_writebyte = chByte;
+  uint8_t loc_writebyte = par_byte;
   uint8_t loc_readbyte = 0;
 
   if(par_SPI != NULL)
@@ -54,39 +52,6 @@ uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t chByte)
 
 
   return loc_readbyte;
-
-  /*
-  uint8_t chRetry = 0;
-
-	uint8_t chTemp = 0;
-
-	while (SPI_I2S_GetFlagStatus(tSPIx, SPI_I2S_FLAG_TXE) == RESET) {
-		if (++ chRetry > 200) {
-			return 0;
-		}
-	}
-
-	SPI_I2S_SendData(tSPIx, chByte);
-
-	chRetry=0;
-	while (SPI_I2S_GetFlagStatus(tSPIx, SPI_I2S_FLAG_RXNE) == RESET) {
-		if (++ chRetry > 200) {
-			return 0;
-		}
-	}
-
-	chTemp = SPI_I2S_ReceiveData(tSPIx);
-	*/
-	/* Wait until the BSY flag is set */
-	/*
-	
-	while(SPI_I2S_GetFlagStatus(tSPIx, SPI_I2S_FLAG_BSY) != RESET) {
-	
-	}
-	
-	return chTemp;
-
-	*/
 }
 
 /*-------------------------------END OF FILE-------------------------------*/

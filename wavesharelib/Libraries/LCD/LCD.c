@@ -354,7 +354,7 @@ void lcd_draw_rect(uint16_t hwXpos,  //specify x position.
 }
 
 
-#define _ORIGINAL_WAVESHARE_
+
 
 //initialize the lcd.
 //phwDevId pointer to device ID of lcd
@@ -368,8 +368,6 @@ void lcd_init(SPI_HandleTypeDef *par_hspi)
   HAL_Delay(50);
   __LCD_BKL_CLR();
 
-  //lcd_reset();
-#ifdef _ORIGINAL_WAVESHARE_
     //Driving ability Setting
   lcd_write_register(0xEA,0x00); //PTBA[15:8]
   lcd_write_register(0xEB,0x20); //PTBA[7:0]
@@ -448,100 +446,10 @@ void lcd_init(SPI_HandleTypeDef *par_hspi)
   lcd_write_register(0x08,0x01);
   lcd_write_register(0x09,0x3F); //Row End
 
-#endif /*_ORIGINAL_WAVESHARE_*/
+  lcd_clear_screen(WHITE);
 
-#ifdef _schreibfaul1_
-
-  /*https://github.com/schreibfaul1/ESP32-TFT-Library-ILI9341-HX8347D/blob/master/src/tft.cpp*/
-
-  lcd_write_register(0xEA, 0x00); //PTBA[15:8]
-  lcd_write_register(0xEB, 0x20); //PTBA[7:0]
-  lcd_write_register(0xEC, 0x0C); //STBA[15:8]
-  lcd_write_register(0xED, 0xC4); //STBA[7:0]
-  lcd_write_register(0xE8, 0x40); //OPON[7:0]
-  lcd_write_register(0xE9, 0x38); //OPON1[7:0]
-  lcd_write_register(0xF1, 0x01); //OTPS1B
-  lcd_write_register(0xF2, 0x10); //GEN
-  lcd_write_register(0x27, 0xA3);
-
-    //Gamma 2.2 Setting
-  lcd_write_register(0x40, 0x01); //
-  lcd_write_register(0x41, 0x00); //
-  lcd_write_register(0x42, 0x00); //
-  lcd_write_register(0x43, 0x10); //
-  lcd_write_register(0x44, 0x0E); //
-  lcd_write_register(0x45, 0x24); //
-  lcd_write_register(0x46, 0x04); //
-  lcd_write_register(0x47, 0x50); //
-  lcd_write_register(0x48, 0x02); //
-  lcd_write_register(0x49, 0x13); //
-  lcd_write_register(0x4A, 0x19); //
-  lcd_write_register(0x4B, 0x19); //
-  lcd_write_register(0x4C, 0x16); //
-  lcd_write_register(0x50, 0x1B); //
-  lcd_write_register(0x51, 0x31); //
-  lcd_write_register(0x52, 0x2F); //
-  lcd_write_register(0x53, 0x3F); //
-  lcd_write_register(0x54, 0x3F); //
-  lcd_write_register(0x55, 0x3E); //
-  lcd_write_register(0x56, 0x2F); //
-  lcd_write_register(0x57, 0x7B); //
-  lcd_write_register(0x58, 0x09); //
-  lcd_write_register(0x59, 0x06); //
-  lcd_write_register(0x5A, 0x06); //
-  lcd_write_register(0x5B, 0x0C); //
-  lcd_write_register(0x5C, 0x1D); //
-  lcd_write_register(0x5D, 0xCC); //
-
-
-
-
-    //Power Voltage Setting
-  lcd_write_register(0x1B, 0x1B); //VRH=4.65V
-  lcd_write_register(0x1A, 0x01); //BT (VGH~15V,VGL~-10V,DDVDH~5V)
-  lcd_write_register(0x24, 0x15); //VMH(VCOM High voltage ~3.2V)
-  lcd_write_register(0x25, 0x50); //VML(VCOM Low voltage -1.2V)
-
-  lcd_write_register(0x23, 0x88); //for Flicker adjust //can reload from OTP
-    //Power on Setting
-
-  lcd_write_register(0x18, 0x36); // I/P_RADJ,N/P_RADJ, Normal mode 60Hz
-  lcd_write_register(0x19, 0x01); //OSC_EN='1', start Osc
-  lcd_write_register(0x01, 0x00); //DP_STB='0', out deep sleep
-  lcd_write_register(0x1F, 0x88);// GAS=1, VOMG=00, PON=0, DK=1, XDK=0, DVDH_TRI=0, STB=0
-    HAL_Delay(5);
-  lcd_write_register(0x1F, 0x80);// GAS=1, VOMG=00, PON=0, DK=0, XDK=0, DVDH_TRI=0, STB=0
-    HAL_Delay(5);
-  lcd_write_register(0x1F, 0x90);// GAS=1, VOMG=00, PON=1, DK=0, XDK=0, DVDH_TRI=0, STB=0
-    HAL_Delay(5);
-  lcd_write_register(0x1F, 0xD0);// GAS=1, VOMG=10, PON=1, DK=0, XDK=0, DDVDH_TRI=0, STB=0
-    HAL_Delay(5);
-    //262k/65k color selection
-  lcd_write_register(0x17, 0x05); //default 0x06 262k color // 0x05 65k color
-    //SET PANEL
-  lcd_write_register(0x36, 0x00); //SS_P, GS_P,REV_P,BGR_P
-    //Display ON Setting
-  lcd_write_register(0x28, 0x38); //GON=1, DTE=1, D=1000
-    HAL_Delay(40);
-  lcd_write_register(0x28, 0x3C); //GON=1, DTE=1, D=1100
-
-  lcd_write_register(0x16, 0x08); // MY=0, MX=0, MV=0, BGR=1
-    //Set GRAM Area
-  lcd_write_register(0x02, 0x00);
-  lcd_write_register(0x03, 0x00); //Column Start
-  lcd_write_register(0x04, 0x00);
-  lcd_write_register(0x05, 0xEF); //Column End
-  lcd_write_register(0x06, 0x00);
-  lcd_write_register(0x07, 0x00); //Row Start
-  lcd_write_register(0x08, 0x01);
-  lcd_write_register(0x09, 0x3F); //Row End
-
-#endif /*_schreibfaul1_*/
-
-    lcd_clear_screen(BLACK);
-
-      HAL_Delay(100);
-    __LCD_BKL_SET();
+  HAL_Delay(100);
+  __LCD_BKL_SET();
 
   return;
 }

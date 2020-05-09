@@ -29,7 +29,7 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-extern uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t chByte);
+extern uint8_t spi_read_write_byte(SPI_HandleTypeDef *par_SPI, uint8_t par_byte);
 
 #endif
 
