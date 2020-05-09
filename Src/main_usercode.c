@@ -6,7 +6,7 @@
 #include "uart.h"
 #include "dwt_stm32_delay.h"
 
-extern UART_HandleTypeDef huart1; /*declared in main.c*/
+extern UART_HandleTypeDef huart6; /*declared in main.c*/
 //extern ADC_HandleTypeDef hadc1; /*declared in main.c*/
 extern TIM_HandleTypeDef htim9;
 extern SPI_HandleTypeDef hspi1;
@@ -73,7 +73,7 @@ void main_Init(void)
     DWT_Delay_Init();
     
     /*UART init*/
-    uart_Init(&huart1);
+    uart_Init(&huart6);
     uart_PrintfBuildVersion();
 
     /*TFT2.8 init*/

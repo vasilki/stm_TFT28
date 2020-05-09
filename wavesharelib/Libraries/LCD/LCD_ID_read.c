@@ -21,7 +21,7 @@
 
 
 #define LCD_D0 D0_Pin
-#define LCD_D1 D1_Pin
+#define LCD_D1 LCD_BKL_Pin
 #define LCD_D2 D2_Pin
 #define LCD_D3 D3_Pin
 #define LCD_D4 D4_Pin
@@ -31,7 +31,7 @@
 
 
 #define LCD_D0_GPIO D0_GPIO_Port
-#define LCD_D1_GPIO D1_GPIO_Port
+#define LCD_D1_GPIO LCD_BKL_GPIO_Port
 #define LCD_D2_GPIO D2_GPIO_Port
 #define LCD_D3_GPIO D3_GPIO_Port
 #define LCD_D4_GPIO D4_GPIO_Port
@@ -218,6 +218,14 @@ void lcdSetWriteDir()
     //@pinMode(LCD_D5, mode);
     //@pinMode(LCD_D6, mode);
     //@pinMode(LCD_D7, mode);
+    HAL_GPIO_WritePin(LCD_D0_GPIO, LCD_D0, mode);
+    HAL_GPIO_WritePin(LCD_D1_GPIO, LCD_D1, mode);
+    HAL_GPIO_WritePin(LCD_D2_GPIO, LCD_D2, mode);
+    HAL_GPIO_WritePin(LCD_D3_GPIO, LCD_D3, mode);
+    HAL_GPIO_WritePin(LCD_D4_GPIO, LCD_D4, mode);
+    HAL_GPIO_WritePin(LCD_D5_GPIO, LCD_D5, mode);
+    HAL_GPIO_WritePin(LCD_D6_GPIO, LCD_D6, mode);
+    HAL_GPIO_WritePin(LCD_D7_GPIO, LCD_D7, mode);
 }
 
 
