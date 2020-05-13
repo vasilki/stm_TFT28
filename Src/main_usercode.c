@@ -93,16 +93,25 @@ void main_Init(void)
 void main_heartbeat(void)
 {
   uint32_t loc_time_sec;
+  uint8_t loc_buff[200];
+  uint32_t loc_size;
   static uint32_t loc_prev_time_sec = 0;
 
   loc_time_sec = tim_GetTimeFromStartSEC();
   
   if(loc_prev_time_sec != loc_time_sec)
   {
-    UART_PRINTFINTEGER(loc_time_sec,"DEC")
-
-
-      
+   // UART_PRINTFINTEGER(loc_time_sec,"DEC")
+    loc_size = 0;
+    uart_Scanf(loc_buff, &loc_size);
+    if(loc_size > 0)
+    {
+      UART_PRINTFINTEGER(loc_size,"DEC")
+    }
+    else
+    {
+   //   UART_PRINTFINTEGER(0xFFFFFFFF,"HEX")
+    }
     /*
      * LED2 is occupied by SCI
     if((loc_time_sec % 2) == 0)
