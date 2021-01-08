@@ -446,7 +446,7 @@ void lcd_init(SPI_HandleTypeDef *par_hspi)
   lcd_write_register(0x08,0x01);
   lcd_write_register(0x09,0x3F); //Row End
 
-  lcd_clear_screen(WHITE);
+  lcd_clear_screen(BLACK);
 
   HAL_Delay(100);
   __LCD_BKL_SET();

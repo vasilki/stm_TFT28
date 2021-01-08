@@ -102,7 +102,7 @@ void main_heartbeat(void)
   if(loc_prev_time_sec != loc_time_sec)
   {
    // UART_PRINTFINTEGER(loc_time_sec,"DEC")
-    loc_size = 0;
+    loc_size = 10;
     uart_Scanf(loc_buff, &loc_size);
     if(loc_size > 0)
     {
@@ -134,6 +134,7 @@ void main_heartbeat(void)
   return;
 }
 
+uint8_t GL_TEXT[200] = {0};
 
 void main_draw(void)
 {
@@ -148,6 +149,7 @@ void main_draw(void)
   lcd_draw_line(30, 220, 120, 280, RED);
   lcd_draw_line(120, 280, 210, 240, RED);
 
+  lcd_display_string(10,10,GL_TEXT,FONT_1608, WHITE);
 
   return;
 }
