@@ -138,6 +138,7 @@ uint8_t GL_TEXT[200] = {0};
 
 void main_draw(void)
 {
+  //lcd_clear_screen(BLACK);
 
   lcd_draw_rect(1, 1, 50, 50, RED);
 
