@@ -17,6 +17,7 @@ static void main_heartbeat(void);
 static void main_draw(void);
 static void main_buttons(void);
 
+uint8_t GL_TEXT[K_MAX_STRING] = {0};
 
 void main_usercode(void)
 {
@@ -93,20 +94,21 @@ void main_Init(void)
 void main_heartbeat(void)
 {
   uint32_t loc_time_sec;
-  uint8_t loc_buff[200];
-  uint32_t loc_size;
+  uint32_t loc_size = 0;
+  uint8_t loc_buff[K_MAX_STRING];
   static uint32_t loc_prev_time_sec = 0;
 
   loc_time_sec = tim_GetTimeFromStartSEC();
   
   if(loc_prev_time_sec != loc_time_sec)
   {
-   // UART_PRINTFINTEGER(loc_time_sec,"DEC")
-    loc_size = 10;
     uart_Scanf(loc_buff, &loc_size);
     if(loc_size > 0)
     {
-      UART_PRINTFINTEGER(loc_size,"DEC")
+      memcpy(GL_TEXT,loc_buff,loc_size);
+      uart_ReplaceUnprintableCharacters(GL_TEXT,loc_size,' ');
+      GL_TEXT[loc_size] = 0;
+      uart_Printf(GL_TEXT);
     }
     else
     {
@@ -134,11 +136,12 @@ void main_heartbeat(void)
   return;
 }
 
-uint8_t GL_TEXT[200] = {0};
+
 
 void main_draw(void)
 {
   //lcd_clear_screen(BLACK);
+  static uint8_t loc_buff[K_MAX_STRING] = {0};
 
   lcd_draw_rect(1, 1, 50, 50, RED);
 
@@ -150,7 +153,19 @@ void main_draw(void)
   lcd_draw_line(30, 220, 120, 280, RED);
   lcd_draw_line(120, 280, 210, 240, RED);
 
+  if(strncmp(GL_TEXT,loc_buff,K_MAX_STRING) != 0)
+  {
+    lcd_display_string(10,10,loc_buff,FONT_1608, BLACK);
+    memcpy(loc_buff,GL_TEXT,strnlen(GL_TEXT,K_MAX_STRING));
+    loc_buff[strnlen(GL_TEXT,K_MAX_STRING)] = 0;
+  }
+  else
+  {
+    /*nothing to do*/
+  }
   lcd_display_string(10,10,GL_TEXT,FONT_1608, WHITE);
+
+
 
   return;
 }
